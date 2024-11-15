@@ -1,0 +1,32 @@
+# Ignore build directories
+/build/
+/out/
+
+# Ignore CMake files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+CMakeUserPresets.json
+CMakePresets.json
+
+# Ignore generated files (executables, object files, etc.)
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+*.dSYM/
+
+# Ignore compiled library files
+*.lib
+*.a
+
+# Ignore system files
+.DS_Store  # macOS system file
+Thumbs.db  # Windows system file
+
+# Ignore other editor-specific files
+*.swp  # Vim temporary files
