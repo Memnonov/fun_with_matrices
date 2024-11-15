@@ -9,4 +9,5 @@ include_directories(include)
 
 # The project
 project(My3dEngine)
-add_executable(test src/test.cpp)
+
+add_executable(matrix_test src/matrix_test.cpp src/matrix.cpp)
