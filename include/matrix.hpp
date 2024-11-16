@@ -28,7 +28,7 @@ public:
     data = std::vector(rows, std::vector<float>(columns, 0.0f));
   }
 
-  explicit Matrix(std::initializer_list<std::initializer_list<float>>);
+  Matrix(std::initializer_list<std::initializer_list<float>>);
 
   // No boundary checking, dangerous and cool!
   std::vector<float> &operator[](unsigned int row) { return data[row]; }
@@ -55,6 +55,8 @@ public:
   Matrix operator*(const Matrix &other) const;
 
   Matrix transpose() const;
+
+  Matrix& transform(const Matrix& transformation);
 
   void print() const;
 };

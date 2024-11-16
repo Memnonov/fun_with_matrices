@@ -9,19 +9,41 @@ abstract "Matrix" as m_header <<Header>> {
   -data: std::vector<std::vector<float>>
   +<<constructor>>Matrix()
   +<<constructor>>Matrix(unsigned int, unsigned int)
-  +{abstract}<<constructor>>Matrix(std::initializer_list<std::initializer_list>>)
+  +{abstract} <<constructor>>Matrix(std::initializer_list<std::initializer_list>>)
   +operator[](): std::vector<float>&
-  +const operator[](): const std::vector<float>
-  +{abstract}const operator*(Matrix): Matrix
+  +operator[]() const: const std::vector<float>
+  +{abstract} operator*(Matrix) const: Matrix
   +at(unsigned int, unsigned int): float 
-  +{abstract} print(): void
+  +{abstract} print() const: void
+  +{abstract} transpose() const: Matrix
+  +{abstract}transform(Matrix): void
 }
 
 class "Matrix" as m_implementation <<Implementation>> extends m_header {
   +<<constructor>>Matrix(std::initializer_list<std::initializer_list>>)
-  +const operator*(Matrix): Matrix
+  +operator*(Matrix) const: Matrix
+  +transpose(): Matrix
+  +transform(Matrix): void
   +print(): void
 }
 
+abstract Shape <<Header>> {
+  -modelMatrix: Matrix
+}
+m_implementation o-- Shape
+
+class Plane <<Header>> extends Shape {
+-width: std::size_t
+-length: std::size_t
+}
+
+class Box <<Header>> extends Shape {
+-width: std::size_t
+-length: std::size_t
+-depth: std::size_t
+}
+
+class AsciiRenderer
+AsciiRenderer --> Shape : renders
 
 @enduml

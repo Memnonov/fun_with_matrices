@@ -82,5 +82,12 @@ int main() {
   testMatrix = testMatrix.transpose();
   testMatrix.print();
 
+  std::cout << "Testing Matrix::transform.\n";
+  testMatrix = Matrix({{1, 2, 3}, {4, 5, 6}});
+  testMatrix.print();
+  std::cout << "Flipping rows:\n";
+  testMatrix.transform({{0, 1}, {1, 0}}).transform({{1, 0}, {0, 1}}); // chaining!
+  testMatrix.print();
+
   return EXIT_SUCCESS;
 }

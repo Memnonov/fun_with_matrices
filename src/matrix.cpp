@@ -2,11 +2,11 @@
 #include <cstddef>
 #include <initializer_list>
 #include <iostream>
-#include <iterator>
 #include <stdexcept>
 #include <string>
 
 const std::string INVALID_DIMENSIONS_EXC{"Invalid matrix dimensions: "};
+const std::string INVALID_TRANSFORMATION_EXC{"Incompatible transformation matrix"};
 
 Matrix::Matrix(std::initializer_list<std::initializer_list<float>> init) {
   if (!init.size()) {
@@ -58,6 +58,15 @@ Matrix Matrix::transpose() const {
     }
   }
   return result;
+}
+
+Matrix& Matrix::transform(const Matrix& transformation) {
+  try {
+  *this = transformation * *this;
+  } catch (const std::invalid_argument& exc) {
+    throw std::invalid_argument(INVALID_TRANSFORMATION_EXC);
+  }
+  return *this;
 }
 
 void Matrix::print() const {
