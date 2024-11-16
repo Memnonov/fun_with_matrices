@@ -9,6 +9,7 @@ abstract "Matrix" as m_header <<Header>> {
   -data: std::vector<std::vector<float>>
   +<<constructor>>Matrix()
   +<<constructor>>Matrix(unsigned int, unsigned int)
+  +{abstract}<<constructor>>Matrix(std::initializer_list<std::initializer_list>>)
   +operator[](): std::vector<float>&
   +const operator[](): const std::vector<float>
   +at(unsigned int, unsigned int): float 
@@ -16,6 +17,7 @@ abstract "Matrix" as m_header <<Header>> {
 }
 
 class "Matrix" as m_implementation <<Implementation>> extends m_header {
+  +<<constructor>>Matrix(std::initializer_list<std::initializer_list>>)
   +print(): void
 }
 

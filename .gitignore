@@ -30,3 +30,6 @@ Thumbs.db  # Windows system file
 
 # Ignore other editor-specific files
 *.swp  # Vim temporary files
+
+# LSP, formating stuff
+.clang-format
