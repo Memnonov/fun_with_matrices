@@ -61,5 +61,12 @@ int main() {
     std::cout << exc.what() << '\n';
   }
 
+  std::cout << "Testing multiplication: transforming row order\n";
+  testMatrix = Matrix({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+  testMatrix.print();
+  std::cout << "Transformed matrix:\n";
+  testMatrix = Matrix({{0, 0, 1}, {0, 1, 0}, {1, 0, 0}}) * testMatrix;
+  testMatrix.print();
+
   return EXIT_SUCCESS;
 }

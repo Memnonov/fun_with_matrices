@@ -7,6 +7,7 @@
 
 const std::string OUT_OF_BOUNDS_EXC{"Trying to access out of bounds element! "};
 const std::string ZERO_DIMENSION_EXC{"Dimensions of the matrix must be non-zero!"};
+const std::string INCOMPATIBLE_EXC{"Using operator on incompatible matrices! Operator: "};
 
 class Matrix {
 
@@ -50,6 +51,8 @@ public:
     }
     return data[row][column];
   }
+
+  Matrix operator*(const Matrix &other) const;
 
   void print() const;
 };

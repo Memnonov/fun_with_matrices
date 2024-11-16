@@ -12,12 +12,14 @@ abstract "Matrix" as m_header <<Header>> {
   +{abstract}<<constructor>>Matrix(std::initializer_list<std::initializer_list>>)
   +operator[](): std::vector<float>&
   +const operator[](): const std::vector<float>
+  +{abstract}const operator*(Matrix): Matrix
   +at(unsigned int, unsigned int): float 
   +{abstract} print(): void
 }
 
 class "Matrix" as m_implementation <<Implementation>> extends m_header {
   +<<constructor>>Matrix(std::initializer_list<std::initializer_list>>)
+  +const operator*(Matrix): Matrix
   +print(): void
 }
 
