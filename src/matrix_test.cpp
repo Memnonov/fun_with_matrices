@@ -21,9 +21,13 @@ int main() {
   testMatrix[5][3] = 6.0f;
   testMatrix.print();
 
+  std::cout << "at(2, 2)";
+  testMatrix.at(2, 2) = 6.0f;
+  testMatrix.print();
+
   std::cout << "Testing out of bounds element.\n";
   try {
-    testMatrix[6][6] = 666;
+    testMatrix.at(6, 6) = 666;
   } catch (std::out_of_range exc) {
     std::cout << "Exception caught:\n" << exc.what() << '\n';
   }

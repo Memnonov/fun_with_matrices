@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-const std::string OUT_OF_BOUNDS_EXC {"Trying to access out of bounds row! "};
+const std::string OUT_OF_BOUNDS_EXC {"Trying to access out of bounds element! "};
 const std::string ZERO_DIMENSION_EXC {"Dimensions of the matrix must be non-zero!"};
 
 class Matrix {
@@ -27,20 +27,28 @@ public:
     data = std::vector(rows, std::vector<float>(columns, 0.0f));
   }
 
-  // Access elements with [] operator
+  // No boundary checking, dangerous and cool!
   std::vector<float> &operator[](unsigned int row) {
-    if (row >= rows){
-      throw std::out_of_range(OUT_OF_BOUNDS_EXC + std::to_string(row));
-    }
     return data[row];
   }
   
   const std::vector<float> &operator[](unsigned int row) const {
-    if (row >= rows){
-      throw std::out_of_range(OUT_OF_BOUNDS_EXC + std::to_string(row));
-    }
-
     return data[row];
+  }
+
+  // Boundary checked access to elements
+  float& at(unsigned int row, unsigned int column) {
+    if (row >= rows || column >= columns){
+      throw std::out_of_range(OUT_OF_BOUNDS_EXC + std::to_string(row) + " | " + std::to_string(column));
+    }
+    return data[row][column];
+  }
+
+  const float& at(unsigned int row, unsigned int column) const {
+    if (row >= rows || column >= columns){
+      throw std::out_of_range(OUT_OF_BOUNDS_EXC + std::to_string(row) + " | " + std::to_string(column));
+    }
+    return data[row][column];
   }
 
   void print() const;

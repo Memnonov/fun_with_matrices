@@ -3,7 +3,7 @@
 skinparam dpi 160
 skinparam genericdisplay old
 
-abstract "Matrix" as m_header {
+abstract "Matrix" as m_header <<Header>> {
   -rows: unsigned int = 0
   -columns: unsigned int = 0
   -data: std::vector<std::vector<float>>
@@ -11,10 +11,11 @@ abstract "Matrix" as m_header {
   +<<constructor>>Matrix(unsigned int, unsigned int)
   +operator[](): std::vector<float>&
   +const operator[](): const std::vector<float>
+  +at(unsigned int, unsigned int): float 
   +{abstract} print(): void
 }
 
-class "Matrix" as m_implementation extends m_header {
+class "Matrix" as m_implementation <<Implementation>> extends m_header {
   +print(): void
 }
 
