@@ -54,6 +54,8 @@ public:
 
   Matrix operator*(const Matrix &other) const;
 
+  Matrix transpose() const;
+
   void print() const;
 };
 

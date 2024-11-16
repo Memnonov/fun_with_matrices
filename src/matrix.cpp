@@ -31,7 +31,7 @@ Matrix::Matrix(std::initializer_list<std::initializer_list<float>> init) {
 }
 
 Matrix Matrix::operator*(const Matrix &other) const {
-  if (this->rows != other.columns) {
+  if (this->columns != other.rows) {
     throw std::invalid_argument(INCOMPATIBLE_EXC + '*');
   }
 
@@ -45,6 +45,16 @@ Matrix Matrix::operator*(const Matrix &other) const {
         product += this->data[i][k] * other.data[k][j];
       }
       result.data[i][j] = product;
+    }
+  }
+  return result;
+}
+
+Matrix Matrix::transpose() const {
+  Matrix result(columns, rows);
+  for (std::size_t i = 0; i < rows; ++i) {
+    for (std::size_t j = 0; j < columns; ++j) {
+      result[j][i] = data[i][j];
     }
   }
   return result;

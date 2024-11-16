@@ -58,7 +58,7 @@ int main() {
   try {
     Matrix invalidMatrix({{1, 2, 3}, {1, 2}});
   } catch (std::invalid_argument exc) {
-    std::cout << exc.what() << '\n';
+    std::cout << exc.what() << "\n\n";
   }
 
   std::cout << "Testing multiplication: transforming row order\n";
@@ -66,6 +66,20 @@ int main() {
   testMatrix.print();
   std::cout << "Transformed matrix:\n";
   testMatrix = Matrix({{0, 0, 1}, {0, 1, 0}, {1, 0, 0}}) * testMatrix;
+  testMatrix.print();
+
+  std::cout << "Transforming to R³ vector\n";
+  testMatrix = Matrix({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+  testMatrix.print();
+  Matrix transformationMatrix({{1, 1, 1}});
+  transformationMatrix.print();
+  testMatrix = transformationMatrix * testMatrix;
+  testMatrix.print();
+
+  std::cout << "Transposing a matrix.\n";
+  testMatrix = Matrix({{1, 2, 3}, {4, 5, 6}, {7, 8, 9}});
+  testMatrix.print();
+  testMatrix = testMatrix.transpose();
   testMatrix.print();
 
   return EXIT_SUCCESS;
